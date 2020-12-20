@@ -44,6 +44,11 @@ public class Job {
         return Objects.hash(getId());
     }
 
+    // isAvailable method for toString
+    public String isAvailable(JobField infoToPrint) {
+        return !infoToPrint.getValue().equals("") ? infoToPrint.getValue() : "Data not available";
+    }
+
     // toString
 
     @Override
@@ -54,15 +59,15 @@ public class Job {
         return "\nID: " +
                 this.getId() +
                 "\nName: " +
-                this.getName() +
+                (!this.getName().equals("") ? this.getName() : "Data not available") +
                 "\nEmployer: " +
-                this.getEmployer() +
+                isAvailable(this.getEmployer()) +
                 "\nLocation: " +
-                this.getLocation() +
+                isAvailable(this.getLocation()) +
                 "\nPosition Type: " +
-                this.getPositionType() +
+                isAvailable(this.getPositionType()) +
                 "\nCore Competency: " +
-                this.getCoreCompetency() +
+                isAvailable(this.getCoreCompetency()) +
                 "\n";
     }
 
